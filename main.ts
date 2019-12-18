@@ -269,7 +269,7 @@ namespace mbitbot {
     }
     //% blockId=Download_ThingSpeak block="Download ThingSpeak|API Keys %apikey|Field1 %f1|Field2 %f2|Field3 %f3|Field4 %f4|Field5 %f5|Field6 %f6|Field7 %f7|Field8 %f8"
     //% weight=10
-    export function IC_ThingSpeak(apikey: string, f1: number, f2: number, f3: number, f4: number, f5: number, f6: number, f7: number, f8: number): void {
+    export function DW_ThingSpeak({ apikey, f1, f2, f3, f4, f5, f6, f7, f8 }: { apikey: string; f1: number; f2: number; f3: number; f4: number; f5: number; f6: number; f7: number; f8: number }): void {
     	let printT2 = "AT+CIPSTART=\"TCP\",\"api.thingspeak.com\",80"
     	serial.writeString(printT2 + "\u000D" + "\u000A")
     	basic.pause(4000)
