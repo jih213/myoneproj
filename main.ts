@@ -273,7 +273,7 @@ namespace mbitbot {
     }
     //% blockId=Download_ThingSpeak block="Download ThingSpeak|API Keys %wapikey"
     //% weight=10
-    export function DW_ThingSpeak(wapikey: string): String {
+    export function DW_ThingSpeak(wapikey: string): string {
         let TS_txt = "0"
         let printT2 = "AT+CIPSTART=\"TCP\",\"api.thingspeak.com\",80"
         serial.writeString(printT2 + "\u000D" + "\u000A")
@@ -286,7 +286,7 @@ namespace mbitbot {
         basic.pause(1000)
         EsResponse = serial.readBuffer(512)
         //TS_txt = EsResponse
-        return TS_txt
+        return printT2
     }
 
     /**
