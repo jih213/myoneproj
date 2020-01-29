@@ -201,7 +201,7 @@ namespace mbitbot {
    let Escount = 0
    let Esnum = 0
    let EsResponse: Buffer = null
-   let TS_txt ="" 
+   let TS_txt ="0" 
     export enum ESPpin {
         //% block="I3 (TX:P13,RX:P14)"
         Ep1 = 1,
@@ -271,21 +271,21 @@ namespace mbitbot {
         serial.writeString(printT3 + "\u000D" + "\u000A")
         basic.pause(1000)
     }
-    //% blockId=Download_ThingSpeak block="Download ThingSpeak|API Keys %apikey"
+    //% blockId=Download_ThingSpeak block="Download ThingSpeak|API Keys %wapikey"
     //% weight=10
-    export function DW_ThingSpeak(apikey: string): String {
-        TS_txt = "0"
+    export function DW_ThingSpeak(wapikey: string): String {
+        let TS_txt = "0"
         let printT2 = "AT+CIPSTART=\"TCP\",\"api.thingspeak.com\",80"
         serial.writeString(printT2 + "\u000D" + "\u000A")
         basic.pause(4000)
-        let printT3 = "GET /channels/946087/fields/1/last.json/?key=" + apikey + "&timezone=Asia/Taipei"
+        let printT3 = "GET /channels/946087/fields/1/last.json/?key=" + wapikey + "&timezone=Asia/Taipei"
         let printT4 = "AT+CIPSEND=" + (printT3.length + 2)
         serial.writeString(printT4 + "\u000D" + "\u000A")
         basic.pause(1000)
         serial.writeString(printT3 + "\u000D" + "\u000A")
         basic.pause(1000)
         EsResponse = serial.readBuffer(512)
-        TS_txt = EsResponse
+        //TS_txt = EsResponse
         return TS_txt
     }
 
