@@ -275,18 +275,18 @@ namespace mbitbot {
     //% weight=10
     export function DW_ThingSpeak(wapikey: string): string {
         let TS_txt = "0"
-        let printT2 = "AT+CIPSTART=\"TCP\",\"api.thingspeak.com\",80"
-        serial.writeString(printT2 + "\u000D" + "\u000A")
+        let printT5 = "AT+CIPSTART=\"TCP\",\"api.thingspeak.com\",80"
+        serial.writeString(printT5 + "\u000D" + "\u000A")
         basic.pause(4000)
-        let printT3 = "GET /channels/946087/fields/1/last.json/?key=" + wapikey + "&timezone=Asia/Taipei"
-        let printT4 = "AT+CIPSEND=" + (printT3.length + 2)
-        serial.writeString(printT4 + "\u000D" + "\u000A")
+        let printT6 = "GET /channels/946087/fields/1/last.json?api_key=FKOCNWWZ1ATWG5CQ&timezone=Asia/Taipei"
+        let printT7 = "AT+CIPSEND=" + (printT6.length + 2)
+        serial.writeString(printT7 + "\u000D" + "\u000A")
         basic.pause(1000)
-        serial.writeString(printT3 + "\u000D" + "\u000A")
+        serial.writeString(printT6 + "\u000D" + "\u000A")
         basic.pause(1000)
-        EsResponse = serial.readBuffer(512)
+        EsResponse = serial.readBuffer(20)
         //TS_txt = EsResponse
-        return printT2
+        return printT5
     }
 
     /**
