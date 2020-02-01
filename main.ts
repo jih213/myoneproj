@@ -271,7 +271,7 @@ namespace mbitbot {
         serial.writeString(printT3 + "\u000D" + "\u000A")
         basic.pause(1000)
     }
-    //% blockId=Download_ThingSpeak block="Download ThingSpeak|API Keys %wapikey"
+    //% blockId=Download_ThingSpeak block="Download ThingSpeak|Read_Keys %wapikey"
     //% weight=10
     export function DW_ThingSpeak(wapikey: string): void {
         let TS_txt = "0"
@@ -284,7 +284,7 @@ namespace mbitbot {
         basic.pause(1000)
         serial.writeString(printT6 + "\u000D" + "\u000A")
         basic.pause(1000)
-        EsResponse = serial.readBuffer(20)
+        //EsResponse = serial.readBuffer(20)
         //TS_txt = EsResponse
         //return printT5
     }
