@@ -278,7 +278,7 @@ namespace mbitbot {
         let printT5 = "AT+CIPSTART=\"TCP\",\"api.thingspeak.com\",80"
         serial.writeString(printT5 + "\u000D" + "\u000A")
         basic.pause(4000)
-        let printT6 = "GET /channels/946087/fields/1/last.json?api_key=FKOCNWWZ1ATWG5CQ&timezone=Asia/Taipei"
+        let printT6 = "GET /channels/946087/fields/1/last.json?api_key="+wapikey+"&timezone=Asia/Taipei"
         let printT7 = "AT+CIPSEND=" + (printT6.length + 2)
         serial.writeString(printT7 + "\u000D" + "\u000A")
         basic.pause(1000)
