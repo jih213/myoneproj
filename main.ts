@@ -268,7 +268,7 @@ namespace mbitbot {
         basic.pause(1000)
     }
     let Escount = 0
-    let Esnum = 0
+    //let Esnum = 68
     let EsResponse: Buffer = null
     let DW_str = 0
     let TS_txt ="0" 
@@ -288,10 +288,10 @@ namespace mbitbot {
     //% blockId=Get_ThingSpeak_field1 block="Get field1"
     //% weight=10
     export function Get_field1(): number {
-        TS_txt = serial.readUntil("{")
-        EsResponse = serial.readBuffer(512)
-        Esnum = EsResponse.getNumber(NumberFormat.Int8LE, 10)
-        //Esnum = 69
+        //TS_txt = serial.readUntil("{")
+        //EsResponse = serial.readBuffer(512)
+        //Esnum = EsResponse.getNumber(NumberFormat.Int8LE, 10)
+        let Esnum = 69
         //TS_txt = EsResponse
         return Esnum
     }
