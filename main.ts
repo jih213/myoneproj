@@ -288,10 +288,10 @@ namespace mbitbot {
     //% blockId=Get_ThingSpeak_field1 block="Get field1"
     //% weight=10
     export function Get_field1(): number {
-        //TS_txt = serial.readUntil("{")
-        //EsResponse = serial.readBuffer(512)
-        //Esnum = EsResponse.getNumber(NumberFormat.Int8LE, 10)
-        let Esnum = 69
+        Ts_txt=serial.readUntil(":")
+        EsResponse = serial.readBuffer(20)
+        let Esnum = EsResponse.getNumber(NumberFormat.Int8LE, 10)
+        //let Esnum = 69
         //TS_txt = EsResponse
         return Esnum
     }
