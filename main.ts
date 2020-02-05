@@ -284,12 +284,12 @@ namespace mbitbot {
         basic.pause(1000)
         serial.writeString(printT6 + "\u000D" + "\u000A")
         basic.pause(1000)
+        EsResponse = serial.readBuffer(512)
     }
     //% blockId=Get_ThingSpeak_field1 block="Get thingspeak field1"
     //% weight=10
     export function Get_field1(): number {
         //Ts_txt=serial.readUntil(":")
-        EsResponse = serial.readBuffer(512)
         let Esnum = EsResponse.getNumber(NumberFormat.Int8LE, 200)
         //TS_txt = EsResponse
         return Esnum
