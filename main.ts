@@ -272,7 +272,6 @@ namespace mbitbot {
     let EsResponse: Buffer = null
     let DW_str = 0
     let TS_txt ="0" 
- 
     //% blockId=Download_ThingSpeak block="Download ThingSpeak|Read_Keys %wapikey"
     //% weight=10
     export function DW_ThingSpeak(wapikey: string): number {
@@ -287,9 +286,9 @@ namespace mbitbot {
         basic.pause(1000)
         TS_txt = serial.readUntil("{")
         EsResponse = serial.readBuffer(20)
-        Enum = EsResponse.getNumber(NumberFormat.Int8LE, 1)
+        Esnum = EsResponse.getNumber(NumberFormat.Int8LE, 1)
         //TS_txt = EsResponse
-        return Enum
+        return Esnum
     }
 
     /**
