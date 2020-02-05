@@ -198,10 +198,6 @@ namespace mbitbot {
     /**
     * ESP8266
     */
-   let Escount = 0
-   let Esnum = 0
-   let EsResponse: Buffer = null
-   let TS_txt ="0" 
     export enum ESPpin {
         //% block="I3 (TX:P13,RX:P14)"
         Ep1 = 1,
@@ -271,10 +267,15 @@ namespace mbitbot {
         serial.writeString(printT3 + "\u000D" + "\u000A")
         basic.pause(1000)
     }
+    let Escount = 0
+    let Esnum = 0
+    let EsResponse: Buffer = null
+    let DW_str = 0
+    let TS_txt ="0" 
+ 
     //% blockId=Download_ThingSpeak block="Download ThingSpeak|Read_Keys %wapikey"
     //% weight=10
-    export function DW_ThingSpeak(wapikey: string): void {
-        let TS_txt = "0"
+    export function DW_ThingSpeak(wapikey: string): number {
         let printT5 = "AT+CIPSTART=\"TCP\",\"api.thingspeak.com\",80"
         serial.writeString(printT5 + "\u000D" + "\u000A")
         basic.pause(4000)
@@ -284,9 +285,11 @@ namespace mbitbot {
         basic.pause(1000)
         serial.writeString(printT6 + "\u000D" + "\u000A")
         basic.pause(1000)
-        //EsResponse = serial.readBuffer(20)
+        TS_txt = serial.readUntil("{")
+        EsResponse = serial.readBuffer(20)
+        Enum = EsResponse.getNumber(NumberFormat.Int8LE, 1)
         //TS_txt = EsResponse
-        //return printT5
+        return Enum
     }
 
     /**
