@@ -268,10 +268,10 @@ namespace mbitbot {
         basic.pause(1000)
     }
     let Escount = 0
-    //let Esnum = 68
+    let Esnum = 0
     let EsResponse: Buffer = null
     let DW_str = 0
-    let TS_txt ="0" 
+    let TS_txt = "0" 
     //% blockId=Download_ThingSpeak block="Download ThingSpeak|Read_Keys %wapikey"
     //% weight=10
     export function DW_ThingSpeak(wapikey: string): void {
@@ -284,15 +284,31 @@ namespace mbitbot {
         basic.pause(1000)
         serial.writeString(printT6 + "\u000D" + "\u000A")
         basic.pause(1000)
-        TS_txt = serial.readUntil(":")
+        TS_txt = serial.readUntil("f")
+        basic.pause(1000)
         EsResponse = serial.readBuffer(20)
+        while (true) {
+            Esnum = EsResponse.getNumber(NumberFormat.Int8LE, Escount)
+            if (Esnum == 66) {
+                Esnum = EsResponse.getNumber(NumberFormat.Int8LE, Escount + 1)
+                if (Esnum == 77) {
+                    EsResponse.shift(Escount)
+                    DW_str = EsResponse[10] * 256 + EsResponse[11]
+                    break
+                }
+            }
+            Escount = Escount + 1
+            if (Escount > 5) {
+                break
+            }
+        }
     }
     //% blockId=Get_ThingSpeak_field1 block="Get thingspeak field1"
     //% weight=10
     export function Get_field1(): number {
-        let Esnum = EsResponse[10]
+        
         //TS_txt = EsResponse
-        return Esnum
+        return DW_str
     }
 
     /**
