@@ -284,24 +284,24 @@ namespace mbitbot {
         basic.pause(1000)
         serial.writeString(printT6 + "\u000D" + "\u000A")
         basic.pause(1000)
-        TS_txt = serial.readUntil("f")
-        basic.pause(1000)
-        EsResponse = serial.readBuffer(20)
-        while (true) {
-            Esnum = EsResponse.getNumber(NumberFormat.Int8LE, Escount)
-            if (Esnum == 66) {
-                Esnum = EsResponse.getNumber(NumberFormat.Int8LE, Escount + 1)
-                if (Esnum == 77) {
-                    EsResponse.shift(Escount)
-                    DW_str = EsResponse[10] * 256 + EsResponse[11]
-                    break
-                }
-            }
-            Escount = Escount + 1
-            if (Escount > 5) {
-                break
-            }
-        }
+       // TS_txt = serial.readUntil("f")
+       // basic.pause(1000)
+       // EsResponse = serial.readBuffer(20)
+       // while (true) {
+       //     Esnum = EsResponse.getNumber(NumberFormat.Int8LE, Escount)
+       //     if (Esnum == 66) {
+       //         Esnum = EsResponse.getNumber(NumberFormat.Int8LE, Escount + 1)
+       //         if (Esnum == 77) {
+       //             EsResponse.shift(Escount)
+       //             DW_str = EsResponse[10] * 256 + EsResponse[11]
+       //            break
+       //         }
+       //     }
+       //     Escount = Escount + 1
+       //     if (Escount > 5) {
+       //         break
+       //     }
+       // }
     }
     //% blockId=Get_ThingSpeak_field1 block="Get thingspeak field1"
     //% weight=10
