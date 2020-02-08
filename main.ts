@@ -303,12 +303,27 @@ namespace mbitbot {
        //     }
        // }
     }
-    //% blockId=Get_ThingSpeak_field1 block="Get thingspeak field1"
+    //% blockId=Get_ThingSpeak_field1 block="Get thingspeak field1 %s1"
     //% weight=10
-    export function Get_field1(): number {
-        
+    export function Get_field1(s1:string): number {
+        let ret1 = 0
+        let i = 0
+        let s_f1 = ""
+        while(true){
+            if (s1.substr(i,6) == "field1") {
+                s_f1 = s1.substring(i+10,2)
+                ret1 = parseInt(s_f1)
+                return ret1
+                break
+            }
+            i=i++
+            if (i > 20) {
+                return 0
+                break
+            }   
+        }
         //TS_txt = EsResponse
-        return DW_str
+        return ret1
     }
 
     /**
