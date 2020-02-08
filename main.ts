@@ -303,9 +303,9 @@ namespace mbitbot {
        //     }
        // }
     }
-    //% blockId=Get_ThingSpeak_field1 block="Get thingspeak field1 %s1"
+    //% blockId=Get_ThingSpeak_field1 block="Get thingspeak field1|P5_str %s1"
     //% weight=10
-    export function Get_field1(s1:string): number {
+    export function Get_field1(s1: string): number {
         let ret1 = 0
         let i = 0
         let s_f1 = ""
