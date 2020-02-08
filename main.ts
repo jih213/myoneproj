@@ -284,45 +284,27 @@ namespace mbitbot {
         basic.pause(1000)
         serial.writeString(printT6 + "\u000D" + "\u000A")
         basic.pause(1000)
-       // TS_txt = serial.readUntil("f")
-       // basic.pause(1000)
-       // EsResponse = serial.readBuffer(20)
-       // while (true) {
-       //     Esnum = EsResponse.getNumber(NumberFormat.Int8LE, Escount)
-       //     if (Esnum == 66) {
-       //         Esnum = EsResponse.getNumber(NumberFormat.Int8LE, Escount + 1)
-       //         if (Esnum == 77) {
-       //             EsResponse.shift(Escount)
-       //             DW_str = EsResponse[10] * 256 + EsResponse[11]
-       //            break
-       //         }
-       //     }
-       //     Escount = Escount + 1
-       //     if (Escount > 5) {
-       //         break
-       //     }
-       // }
     }
-    //% blockId=Get_ThingSpeak_field1 block="Get thingspeak field1|P5_str %s1"
-    //% weight=10
-    export function Get_field1(P5_str: string): number {
-        let ret1 = 0
-        let i = 0
-        let s_f1 = ""
-        while(true){
-            if (P5_str.substr(i,6) == "field1") {
-                s_f1 = P5_str.substr(i+10,2)
-                ret1 = parseInt(s_f1)
-                return ret1
-                break
-            }
-            i=i+1
-            if (i > 20) {
-                break
-            }   
-        }
-        return ret1
-    }
+//    //% blockId=Get_ThingSpeak_field1 block="Get thingspeak field1|P5_str %s1"
+//    //% weight=10
+//    export function Get_field1(P5_str: string): number {
+//        let ret1 = 0
+//        let i = 0
+//        let s_f1 = ""
+//        while(true){
+//            if (P5_str.substr(i,6) == "field1") {
+ //               s_f1 = P5_str.substr(i+10,2)
+//                ret1 = parseInt(s_f1)
+//                return ret1
+//                break
+//            }
+//            i=i+1
+//            if (i > 20) {
+//                break
+//            }   
+//        }
+//        return ret1
+//    }
 
     /**
     * PMS3003 air sensor
