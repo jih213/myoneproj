@@ -311,18 +311,16 @@ namespace mbitbot {
         let s_f1 = ""
         while(true){
             if (P5_str.substr(i,6) == "field1") {
-                s_f1 = P5_str.substring(i+10,2)
+                s_f1 = P5_str.substr(i+10,2)
                 ret1 = parseInt(s_f1)
                 return ret1
                 break
             }
-            i=i++
+            i=i+1
             if (i > 20) {
-                return 0
                 break
             }   
         }
-        //TS_txt = EsResponse
         return ret1
     }
 
