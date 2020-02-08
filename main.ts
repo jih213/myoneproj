@@ -305,13 +305,13 @@ namespace mbitbot {
     }
     //% blockId=Get_ThingSpeak_field1 block="Get thingspeak field1|P5_str %s1"
     //% weight=10
-    export function Get_field1(s1: string): number {
+    export function Get_field1(P5_str: string): number {
         let ret1 = 0
         let i = 0
         let s_f1 = ""
         while(true){
-            if (s1.substr(i,6) == "field1") {
-                s_f1 = s1.substring(i+10,2)
+            if (P5_str.substr(i,6) == "field1") {
+                s_f1 = P5_str.substring(i+10,2)
                 ret1 = parseInt(s_f1)
                 return ret1
                 break
